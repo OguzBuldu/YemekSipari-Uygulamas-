@@ -1,0 +1,125 @@
+import tkinter as tk
+
+#Arayüzü Oluşturmak.
+form = tk.Tk()
+form.title("Yemek Sipariş Uygulaması") # Uygulamanın Başlığı
+form.geometry("600x600") # Açilan Pencrenin Boyutu
+
+#Sitenin İçerisi
+başlık = tk.Label(form, text="Sipariş İçin Lütfen Aşşağıdaki Bilgileri Doldurunuz.", font=("times", 15), bg="black", fg="white")
+başlık.pack()
+
+entry = tk.StringVar()  #Kullanıcıdan alınan Bilgileri Yazdırabilmek için
+entry1 = tk.StringVar() #Kullanıcıdan alınan Bilgileri Yazdırabilmek için
+
+
+#Uygulamanın içinde Bulunacak Yazılar
+
+isim =tk.Label(form, text="İsim Soyisim: ",  font="times 12 italic").place(x=10, y=50)
+adres = tk.Label(form, text="Adres: ", font="times 12 italic", ).place(x=10, y= 80)
+porsiyon = tk.Label(form, text="Porsiyonlar:",  font="times 12 italic").place(x=10, y=110)
+ödeme = tk.Label(form, text="Ödeme Şekli: ", font="times 12 italic").place(x=10, y=140)
+
+# Uygulamanın içinde Bulunacak Kullanıcdan Verİ Almak İçin
+isim1 = tk.Entry(textvariable=entry, width=30).place(x=100,y=50)
+adres1 = tk.Entry(textvariable=entry1, width=30).place(x=100,y=81)
+
+porsiyon5 = tk.StringVar()
+porsiyon1 = tk.Radiobutton(form, text="Küçük", activebackground="green", value="küçük Boy", variable=porsiyon5).place(x=100,y=110)
+porsiyon2 = tk.Radiobutton(form, text="Orta", activebackground="green",value="Orta Boy", variable=porsiyon5).place(x=160,y=110)
+porsiyon3 = tk.Radiobutton(form, text="Büyük", activebackground="green",value="Büyük Boy", variable=porsiyon5).place(x=220,y=110)
+
+ödeme3 = tk.IntVar()
+ödeme1 = tk.Checkbutton(form, text="Nakit(1)", variable=ödeme3, onvalue=1 , offvalue=0,).place(x=110, y= 140)
+ödeme2 = tk.Checkbutton(form, text="Kredi Karti(2)", variable=ödeme3, onvalue=2, offvalue=0,).place(x=170, y= 140)
+
+#Buttonların Çalışabilmesi İçin
+def menu():
+    yemek = tk.Label(form, text="Yemek Çeşitlerimiz Aşağıdakilerdir.", bg="black", font=("times", 14), fg="white")
+    yemek.place(x=0, y=205)
+
+    def makarna(): #Makarna Buttonuna Basıldığında Yapılmasını İstediğim İşlemler:
+        makarna_label = tk.Label(form, text="Makarna Seçtiniz.",font="times 12 italic",bg="black",fg="white").place(x=105,y=570)
+        sipariş_bilgileri = tk.Label(form, text="Sipariş Bilgileriniz.",bg="black", font=("times", 14), fg="white").place(x=0,y=450)
+        isim =tk.Label(form, text="İsim Soyisim: ",  font="times 12 italic",bg="black",fg="white").place(x=0, y=480)
+        adres = tk.Label(form, text="Adres: ", font="times 12 italic",bg="black",fg="white" ).place(x=0, y= 510)
+        porsiyon = tk.Label(form, text="Porsiyonlar:",  font="times 12 italic",bg="black",fg="white").place(x=0, y=540)
+        ödeme = tk.Label(form, text="Ödeme Şekli: ", font="times 12 italic",bg="black",fg="white").place(x=0, y=570)
+        sipariş = tk.Label(form, text="Seçilen Yemek: ",font="times 12 italic",bg="black",fg="white").place(x=0, y=600)
+
+        isim =tk.Label(form, text=entry.get(),  font="times 12 italic",bg="black",fg="white").place(x=95, y=480)
+        adres = tk.Label(form, text=entry1.get(), font="times 12 italic",bg="black",fg="white" ).place(x=50, y= 510)
+        porsiyon = tk.Label(form, text=porsiyon5.get(),  font="times 12 italic",bg="black",fg="white").place(x=100, y=540)
+        ödeme = tk.Label(form, text=ödeme3.get(), font="times 12 italic",bg="black",fg="white").place(x=100, y=570)
+        sipariş = tk.Label(form, text="Seçilen Yemek: ",font="times 12 italic",bg="black",fg="white").place(x=0, y=600)
+
+    makarna_button = tk.Button(form, text="Makarna", width=7, height=5, command=makarna) #Makarna Butonu
+    makarna_button.place(x=0, y=255)
+
+    def corba(): #Çorba Buttonuna Basıldığında Yapılmasını İstediğim İşlemler:
+        corba_label = tk.Label(form, text="Çorba Seçtiniz.",font="times 12 italic",bg="black",fg="white").place(x=105,y=570)
+        sipariş_bilgileri = tk.Label(form, text="Sipariş Bilgileriniz.",bg="black", font=("times", 14), fg="white").place(x=0,y=450)
+        isim =tk.Label(form, text="İsim Soyisim: ",  font="times 12 italic",bg="black",fg="white").place(x=0, y=480)
+        adres = tk.Label(form, text="Adres: ", font="times 12 italic",bg="black",fg="white" ).place(x=0, y=510)
+        porsiyon = tk.Label(form, text="Porsiyonlar:",  font="times 12 italic",bg="black",fg="white").place(x=0, y=540)
+        ödeme = tk.Label(form, text="Ödeme Şekli: ", font="times 12 italic",bg="black",fg="white").place(x=0, y=570)
+        sipariş = tk.Label(form, text="Seçilen Yemek: ",font="times 12 italic",bg="black",fg="white").place(x=0, y=600)
+
+        isim =tk.Label(form, text=entry.get(),  font="times 12 italic",bg="black",fg="white").place(x=95, y=480)
+        adres = tk.Label(form, text=entry1.get(), font="times 12 italic",bg="black",fg="white" ).place(x=50, y= 510)
+        porsiyon = tk.Label(form, text=porsiyon5.get(),  font="times 12 italic",bg="black",fg="white").place(x=100, y=540)
+        ödeme = tk.Label(form, text=ödeme3.get(), font="times 12 italic",bg="black",fg="white").place(x=100, y=570)
+        sipariş = tk.Label(form, text="Seçilen Yemek: ",font="times 12 italic",bg="black",fg="white").place(x=0, y=600)
+
+    corba_button = tk.Button(form, text="Çorba", width=7, height=5, command=corba)#Çorba Butonu
+    corba_button.place(x=0, y=335)
+
+    def mantı(): #Mantı Buttonuna Basıldığında Yapılmasını İstediğim İşlemler:
+        mantı_label = tk.Label(form, text="Mantı Seçtiniz.",font="times 12 italic",bg="black",fg="white").place(x=105,y=570)
+        sipariş_bilgileri = tk.Label(form, text="Sipariş Bilgileriniz.",bg="black", font=("times", 14), fg="white").place(x=0,y=450)
+        isim =tk.Label(form, text="İsim Soyisim: ",  font="times 12 italic",bg="black",fg="white").place(x=0, y=480)
+        adres = tk.Label(form, text="Adres: ", font="times 12 italic",bg="black",fg="white" ).place(x=0, y= 510)
+        porsiyon = tk.Label(form, text="Porsiyonlar:",  font="times 12 italic",bg="black",fg="white").place(x=0, y=540)
+        ödeme = tk.Label(form, text="Ödeme Şekli: ", font="times 12 italic",bg="black",fg="white").place(x=0, y=570)
+        sipariş = tk.Label(form, text="Seçilen Yemek: ",font="times 12 italic",bg="black",fg="white").place(x=0, y=600)
+
+        isim =tk.Label(form, text=entry.get(),  font="times 12 italic",bg="black",fg="white").place(x=95, y=480)
+        adres = tk.Label(form, text=entry1.get(), font="times 12 italic",bg="black",fg="white" ).place(x=50, y= 510)
+        porsiyon = tk.Label(form, text=porsiyon5.get(),  font="times 12 italic",bg="black",fg="white").place(x=100, y=540)
+        ödeme = tk.Label(form, text=ödeme3.get(), font="times 12 italic",bg="black",fg="white").place(x=100, y=570)
+        sipariş = tk.Label(form, text="Seçilen Yemek: ",font="times 12 italic",bg="black",fg="white").place(x=0, y=600)
+        
+
+    mantı_button = tk.Button(form, text="Mantı", width=7, height=5, command=mantı) #Mantı Butonu
+    mantı_button.place(x=60, y=255)
+
+    def pilav():#Pilav Buttonuna Basıldığında Yapılmasını İstediğim İşlemler:
+        pilav_label = tk.Label(form, text="Pilav Seçtiniz.",font="times 12 italic",bg="black",fg="white").place(x=105,y=570)
+        sipariş_bilgileri = tk.Label(form, text="Sipariş Bilgileriniz.",bg="black", font=("times", 14), fg="white").place(x=0,y=450)
+        isim =tk.Label(form, text="İsim Soyisim: ",  font="times 12 italic",bg="black",fg="white").place(x=0, y=480)
+        adres = tk.Label(form, text="Adres: ", font="times 12 italic",bg="black",fg="white" ).place(x=0, y= 510)
+        porsiyon = tk.Label(form, text="Porsiyonlar:",  font="times 12 italic",bg="black",fg="white").place(x=0, y=540)
+        ödeme = tk.Label(form, text="Ödeme Şekli: ", font="times 12 italic",bg="black",fg="white").place(x=0, y=570)
+        sipariş = tk.Label(form, text="Seçilen Yemek: ",font="times 12 italic",bg="black",fg="white").place(x=0, y=600)
+
+        isim =tk.Label(form, text=entry.get(),  font="times 12 italic",bg="black",fg="white").place(x=95, y=480)
+        adres = tk.Label(form, text=entry1.get(), font="times 12 italic",bg="black",fg="white" ).place(x=50, y= 510)
+        porsiyon = tk.Label(form, text=porsiyon5.get(),  font="times 12 italic",bg="black",fg="white").place(x=100, y=540)
+        ödeme = tk.Label(form, text=ödeme3.get(), font="times 12 italic",bg="black",fg="white").place(x=100, y=570)
+        sipariş = tk.Label(form, text="Seçilen Yemek: ",font="times 12 italic",bg="black",fg="white").place(x=0, y=600)
+
+    pilav_button = tk.Button(form, text="Pilav", width=7, height=5, command=pilav) #Pilav Butonu
+    pilav_button.place(x=60, y=335)
+
+    def iptal(): # İptal Buttonuna Basıldığında Yapılmasını İstediğim Görev
+        print("Uygulamamızı Kullandığınız İçin Teşekkürler (:") #Terminale Bu Yazıyı Yazdırmak
+        form.quit() # Uygulamayaı Kapatmak
+
+    iptal_button = tk.Button(form, text="İptal", command=iptal) #İptal Butonu
+    iptal_button.place(x=290, y=255)
+
+
+sipariş_ver = tk.Button(form,text="Sipariş Ver", command=menu).place(x=210,y=170) #Sipariş Buttonu
+
+
+form.mainloop()
